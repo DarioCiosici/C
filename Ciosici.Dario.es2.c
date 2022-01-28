@@ -10,7 +10,7 @@ scanf("%d", &b);
 prod=a*b;
 printf("==Il prodotto è %d\n", prod);
 somma=somma+prod;
-}while(a=0&&b=0);
+}while(a!=0&&b!=0);
 printf("==La somma dei prodotti è %d\n", somma);
 return 0;
 }
