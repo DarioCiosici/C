@@ -11,7 +11,7 @@ scanf("%lf", &b);
 if(a<b)
     rapp=b/a;
 else
-    rapp=b/a;
+    rapp=a/b;
 if(rapp>0)
 {
     rad=sqrt(rapp);
