@@ -24,4 +24,5 @@ int main(int argc, char *argv[])
     }while(valore<b&&valore>a);
     media=media/cntN;
     printf("%d",&media);
+    return 0
 }
