@@ -10,14 +10,14 @@ int main(int argc, char *argv[])
     int a,b,cntN,valore,;
     double media=0;
     do{
-    printf("==Inserisci il valore di a==")
+    printf("==Inserisci il valore di a==");
     scanf("%d", &a);
     printf("==Inserisci il valore di b==");
     scanf("%d", &b);
-    }while(a<B)
+    }while(a<B);
     do
     {
-    printf("==Inserisci dei valori, metterne maggiori ad a o minori di b per uscire==")
+    printf("==Inserisci dei valori, metterne maggioriad a o minori di b per uscire==");
     scanf("%d",&valore);
     media=media+valore;
     cntN++;
