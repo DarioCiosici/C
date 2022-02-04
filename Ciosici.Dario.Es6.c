@@ -19,8 +19,11 @@ int main(int argc, char *argv[])
     {
     printf("==Inserisci dei valori, metterne maggioriad a o minori di b per uscire==");
     scanf("%d",&valore);
-    media=media+valore;
-    cntN++;
+        if(valore<b&&valore>a)
+        {
+         media=media+valore;
+         cntN++;
+        }
     }while(valore<b&&valore>a);
     media=media/cntN;
     printf("%d",&media);
