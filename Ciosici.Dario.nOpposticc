@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main()
+{
+    int N;
+    do
+    {
+    printf("==Inserisci il valore N==");
+    scanf("%d",&N);
+    }while(N<0);
+    for(int i=N-(2*N);i<N+1;i++)
+    {
+        printf("%d\n", i);
+    }
+}
