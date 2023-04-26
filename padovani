@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <string.h>
+
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+int main(int argc, char *argv[])
+{
+    int pid;
+    int p1p2[2];
+    int p2p0[2];
+    char stringa[35];
+    pipe(p1p2);
+    pipe(p2p0);
+    while (1)
+    {
+        printf("Inserisci la parola  da cercare\n");
+        scanf("%s", stringa);
+        /*if (strcmp(stringa, "esci") == 0)
+        {
+            close(p1p2[1]);
+            close(p1p2[0]);
+            close(p2p0[0]);
+            close(p2p0[1]);
+            exit(1);
+        }*/
+
+        
+        pid = fork();
+        if (pid == 0)
+        {
+            close(1);
+            dup(p1p2[1]);
+            close(p1p2[1]);
+            close(p1p2[0]);
+            printf("%s",stringa);
+            execl("/usr/bin/grep","grep",stringa, argv[1], NULL);
+            return -1;
+        }
+        
+        printf("%s",stringa);
+        
+        pid = fork();
+        if (pid == 0)
+        {
+            close(p1p2[1]);
+            close(0);
+            dup(p1p2[0]);
+            close(p1p2[0]);
+
+            close(p2p0[0]);
+            close(1);
+            dup(p2p0[1]);
+            close(p2p0[1]);
+            execl("/usr/bin/wc", "wc", "-l", (char *)0);
+            return -1;
+        }
+        read(p2p0[0], stringa, sizeof(stringa));
+        int fd = open(argv[2], O_WRONLY | O_CREAT, 0777);
+        write(fd, stringa, sizeof(stringa));
+    }
+
+    return -1;
+}
